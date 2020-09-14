@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "SchoolCalender";
+}
+
+< fieldset >  
+    < legend > Calender < /legend>  
+  
+@if(Session["UserName"] != null) { 
+    <text>  User  @Session["UserName"].ToString() </text>  
+} < /fieldset> 
+

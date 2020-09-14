@@ -1,0 +1,46 @@
+﻿@model School_TimeTable.Student
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login", "Calendar", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Login Application</legend>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <table>
+            <tr>
+                <td>@Html.LabelFor(s => s.User_Name)</td>
+                <td>@Html.TextBoxFor(s => s.User_Name)</td>
+                <td>@Html.ValidationMessageFor(s => s.User_Name)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(s => s.Password)
+                </td>
+                <td>
+                    @Html.PasswordFor(s => s.Password)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(s => s.Password)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Login" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+}
+
