@@ -55,6 +55,7 @@ namespace School_TimeTable.Controllers
                     {
                         Session["Teacher_ID"] = obj.teacher_id.ToString();
                         Session["UserName"] = obj.user_name.ToString();
+                        Session["Subject_id"] = obj.subject_id.ToString();
                         return RedirectToAction("Index");
                     }
                 }
@@ -76,7 +77,7 @@ namespace School_TimeTable.Controllers
         public ContentResult Data()
         {
             var data = new SchedulerAjaxData(
-              new SchedulerContext().CalendarEvents.Select(e => new { e.id, e.text, e.start_date, e.end_date }));
+              new SchedulerContext().CalendarEvents.Select(e => new { e.id, e.text, e.start_date, e.end_date }).Where(t => t.id.Equals(Session["Subject_id"])));
             return (ContentResult)data;
         }
 
